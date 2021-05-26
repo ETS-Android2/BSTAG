@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_marginTop="80dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:src="@drawable/totalk_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="토톡콜 NFC Writer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_image"
+        />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/main_image"
+        android:layout_marginTop="80dp"
+        />
+
+    <ImageButton
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn2"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@id/btn1"
+        app:layout_constraintRight_toLeftOf="@+id/btn3"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageButton
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn5"
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@id/btn4"
+        app:layout_constraintRight_toLeftOf="@+id/btn6"
+        app:layout_constraintTop_toBottomOf="@+id/btn2"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageButton
+        android:id="@+id/btn7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn8"
+        app:layout_constraintTop_toBottomOf="@+id/btn4"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@id/btn7"
+        app:layout_constraintRight_toLeftOf="@+id/btn9"
+        app:layout_constraintTop_toBottomOf="@+id/btn5"
+        android:layout_marginTop="20dp"
+        />
+    <ImageButton
+        android:id="@+id/btn9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:src="@drawable/iconbutton"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn8"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn6"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
