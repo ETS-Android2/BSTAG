@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Call">
+    tools:context=".Web">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="전화연결"
+        android:text="웹링크"
         android:textSize="100px"
         android:paddingTop="100dp"
         android:textAlignment="center"
@@ -22,14 +23,14 @@
         android:textSize="60px"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:text="전화번호를 입력해주세요."
+        android:text="유효한 웹링크를 입력하세요.\n http:// 는 생략"
         android:layout_gravity="center"
         android:textAlignment="center"
 
         />
 
     <EditText
-        android:id="@+id/telNum"
+        android:id="@+id/webLink"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:paddingTop="100dp"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
 
-        android:hint="ex) 01012341234"
+        android:hint="ex) www.naver.com"
         android:textAlignment="center"
         />
 
@@ -49,7 +50,5 @@
         android:layout_marginRight="50dp"
         android:text="NFC태그에 기록하기"
         />
-
-
 
 </LinearLayout>

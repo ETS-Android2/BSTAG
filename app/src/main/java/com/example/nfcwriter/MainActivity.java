@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ((ImageButton)findViewById(R.id.btn2)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,WebLink.class);
+                Intent intent=new Intent(MainActivity.this,Web.class);
                 startActivity(intent);
             }
         });

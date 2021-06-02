@@ -38,13 +38,15 @@
 
     <ImageButton
         android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:src="@drawable/iconbutton"
+        android:src="@drawable/app"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn2"
@@ -63,13 +65,15 @@
         />
     <ImageButton
         android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:src="@drawable/iconbutton"
+        android:src="@drawable/web"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@id/btn1"
         app:layout_constraintRight_toLeftOf="@+id/btn3"
@@ -80,7 +84,7 @@
         android:id="@+id/btn2_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="웰링크"
+        android:text="웹링크"
 
         app:layout_constraintTop_toBottomOf="@+id/btn2"
         app:layout_constraintStart_toStartOf="@+id/btn2"
@@ -88,13 +92,15 @@
         />
     <ImageButton
         android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:src="@drawable/iconbutton"
+        android:src="@drawable/contact"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@+id/btn2"
         app:layout_constraintRight_toRightOf="parent"
@@ -114,19 +120,19 @@
 
     <ImageButton
         android:id="@+id/btn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxHeight="100dp"
-        android:maxWidth="100dp"
-        android:src="@drawable/iconbutton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
 
+
+
+        android:src="@drawable/phone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn5"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
     <TextView
         android:id="@+id/btn4_name"
         android:layout_width="wrap_content"
@@ -146,6 +152,8 @@
         android:src="@drawable/iconbutton"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@id/btn4"
         app:layout_constraintRight_toLeftOf="@+id/btn6"
@@ -161,6 +169,8 @@
         android:src="@drawable/iconbutton"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@+id/btn5"
         app:layout_constraintRight_toRightOf="parent"
@@ -177,6 +187,8 @@
         android:src="@drawable/iconbutton"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn8"
@@ -192,6 +204,8 @@
         android:src="@drawable/iconbutton"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@id/btn7"
         app:layout_constraintRight_toLeftOf="@+id/btn9"
@@ -207,6 +221,8 @@
         android:src="@drawable/iconbutton"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+
 
         app:layout_constraintLeft_toRightOf="@+id/btn8"
         app:layout_constraintRight_toRightOf="parent"
