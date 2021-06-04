@@ -6,7 +6,13 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".MyApp">
-
+<TextView
+    android:id="@+id/selectNum"
+    android:text=""
+    android:visibility="invisible"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 <TextView
     android:id="@+id/countApps"
     android:text="Count: "
