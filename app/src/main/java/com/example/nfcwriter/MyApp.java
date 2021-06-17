@@ -232,9 +232,9 @@ public class MyApp extends AppCompatActivity {
 
             NdefRecord record = NdefRecord.createApplicationRecord(packageName);
             NdefMessage message = new NdefMessage(new NdefRecord[] { record });
+
             if (writeTag(message, detectedTag)) {
-                Toast.makeText(this, "기록 성공! : 앱 바로가기가 기록되었습니다.", Toast.LENGTH_LONG)
-                        .show();
+                Toast.makeText(this, "기록 성공! : 앱 바로가기가 기록되었습니다.", Toast.LENGTH_LONG).show();
             }
         }
     }

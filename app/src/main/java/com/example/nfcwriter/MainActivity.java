@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((ImageButton)findViewById(R.id.btn6)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Etiquette.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
