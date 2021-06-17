@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.VIBLATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
 
     <application
         android:allowBackup="true"
@@ -20,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Etiquette"></activity>
+        <activity android:name=".Etiquette"/>
 
         <activity
             android:name=".AudioMode"
@@ -29,7 +32,7 @@
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="totalknfc"
-                    android:host="action"></data>
+                    android:host="action"/>
             </intent-filter>
         </activity>
         <activity android:name=".Web" />
