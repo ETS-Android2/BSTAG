@@ -51,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((ImageButton)findViewById(R.id.btn5)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,GoogleMap.class);
+                startActivity(intent);
+            }
+        });
+
         ((ImageButton)findViewById(R.id.btn6)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
