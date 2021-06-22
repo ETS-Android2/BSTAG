@@ -2,13 +2,9 @@ package com.example.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -54,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ((ImageButton)findViewById(R.id.btn5)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,GoogleMap.class);
+                Intent intent=new Intent(MainActivity.this, Map.class);
                 startActivity(intent);
             }
         });
