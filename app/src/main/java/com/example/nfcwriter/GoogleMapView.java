@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -52,7 +53,7 @@ public class GoogleMapView extends AppCompatActivity
     private GoogleMap mMap;
     private Marker currentMarker = null;
 
-    private static final String TAG = "googlemap_example";
+    private static final String TAG = "googlemap";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int UPDATE_INTERVAL_MS = 1000;  // 1초
     private static final int FASTEST_UPDATE_INTERVAL_MS = 500; // 0.5초
@@ -114,8 +115,12 @@ public class GoogleMapView extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GoogleMapView.this, Map.class);
-                intent.putExtra("lat", String.valueOf(location.getLatitude()));
-                intent.putExtra("lng", String.valueOf(location.getLongitude()));
+
+                EditText editLat = (EditText)findViewById(R.id.edit_lat);
+                EditText editLng = (EditText)findViewById(R.id.edit_lng);
+
+                intent.putExtra("lat", editLat.getText().toString());
+                intent.putExtra("lng", editLng.getText().toString());
 
                 startActivity(intent);
             }
@@ -186,12 +191,37 @@ public class GoogleMapView extends AppCompatActivity
 
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-
+//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//
+//            @Override
+//            public void onMapClick(LatLng latLng) {
+//
+//                Log.d( TAG, "onMapClick :");
+//            }
+//        });
+        // 맵 터치 이벤트 구현 //
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override
-            public void onMapClick(LatLng latLng) {
+            public void onMapClick(LatLng point) {
+                googleMap.clear();
+                MarkerOptions mOptions = new MarkerOptions();
+                // 마커 타이틀
+                mOptions.title("마커 좌표");
+                Double latitude = point.latitude; // 위도
+                Double longitude = point.longitude; // 경도
+                // 마커의 스니펫(간단한 텍스트) 설정
+                mOptions.snippet(latitude.toString() + ", " + longitude.toString());
+                // LatLng: 위도 경도 쌍을 나타냄
+                mOptions.position(new LatLng(latitude, longitude));
+                // 마커(핀) 추가
+                googleMap.addMarker(mOptions);
 
-                Log.d( TAG, "onMapClick :");
+                EditText editLat = (EditText)findViewById(R.id.edit_lat);
+                EditText editLng = (EditText)findViewById(R.id.edit_lng);
+
+                editLat.setText(String.valueOf(mOptions.getPosition().latitude));
+                editLng.setText(String.valueOf(mOptions.getPosition().longitude));
+
             }
         });
     }
@@ -217,9 +247,9 @@ public class GoogleMapView extends AppCompatActivity
 
 
                 //현재 위치에 마커 생성하고 이동
-                setCurrentLocation(location, markerTitle, markerSnippet);
-
+//                setCurrentLocation(location, markerTitle, markerSnippet);
                 mCurrentLocatiion = location;
+
             }
 
 
@@ -342,28 +372,27 @@ public class GoogleMapView extends AppCompatActivity
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
-
-    public void setCurrentLocation(Location location, String markerTitle, String markerSnippet) {
-
-
-        if (currentMarker != null) currentMarker.remove();
-
-
-        LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(currentLatLng);
-        markerOptions.title(markerTitle);
-        markerOptions.snippet(markerSnippet);
-        markerOptions.draggable(true);
-
-
-        currentMarker = mMap.addMarker(markerOptions);
-
-//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
-//        mMap.moveCamera(cameraUpdate);
-
-    }
+//
+//    public void setCurrentLocation(Location location, String markerTitle, String markerSnippet) {
+//
+//
+//        if (currentMarker != null) currentMarker.remove();
+//
+//        LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+//
+//        MarkerOptions markerOptions = new MarkerOptions();
+//        markerOptions.position(currentLatLng);
+//        markerOptions.title(markerTitle);
+//        markerOptions.snippet(markerSnippet);
+//        markerOptions.draggable(true);
+//
+//
+//        currentMarker = mMap.addMarker(markerOptions);
+//
+////        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
+////        mMap.moveCamera(cameraUpdate);
+//
+//    }
 
 
     public void setDefaultLocation() {
@@ -530,7 +559,6 @@ public class GoogleMapView extends AppCompatActivity
                 break;
         }
     }
-
 
 
 }
