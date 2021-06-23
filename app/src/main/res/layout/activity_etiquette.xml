@@ -27,8 +27,12 @@
         android:textAlignment="center"
 
         />
-
-    <CheckBox
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <RadioButton
         android:id="@+id/vibrate_checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +40,7 @@
         android:text="진동모드"
         android:layout_gravity="center"
         />
-    <CheckBox
+    <RadioButton
         android:id="@+id/silent_checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,6 +48,7 @@
         android:text="무음모드"
         android:layout_gravity="center"
         />
+</RadioGroup>
 
     <Button
         android:id="@+id/button"

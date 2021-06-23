@@ -25,15 +25,35 @@
         android:text="지도에서 좌표를 찾아 기록하세요."
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:paddingBottom="20dp"
 
         />
+    <Button
+        android:id="@+id/btn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="좌표로 위치 정보 기록하기"
+        />
+
+    <Button
+        android:id="@+id/btn_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="주소로 위치 정보 기록하기"
+        />
+
 <LinearLayout
+    android:id="@+id/linear_location"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_gravity="center"
-    android:paddingTop="100dp"
+    android:visibility="gone"
     >
+
+
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -45,7 +65,7 @@
         android:id="@+id/edit_lat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="100dp"
+        android:width="120dp"
         android:background="@drawable/border"
         android:layout_margin="10dp"
         />
@@ -60,7 +80,7 @@
         android:id="@+id/edit_lng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="100dp"
+        android:width="120dp"
         android:background="@drawable/border"
         android:layout_margin="10dp"
         />
@@ -74,7 +94,33 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:onClick="goGoogleMap"
+        android:visibility="gone"
         />
+
+    <LinearLayout
+        android:id="@+id/linear_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주소"
+            android:layout_margin="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edit_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="300dp"
+            android:background="@drawable/border"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
@@ -84,6 +130,7 @@
         android:layout_marginRight="50dp"
         android:text="NFC태그에 기록하기"
         />
+
 
 
 
