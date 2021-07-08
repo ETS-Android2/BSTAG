@@ -14,6 +14,8 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,12 +67,50 @@ public class Sns extends AppCompatActivity {
         findViewById(R.id.twitter).setOnClickListener(myClick);
         findViewById(R.id.github).setOnClickListener(myClick);
 
+        EditText urls = (EditText)findViewById(R.id.urlLink);
+        urls.addTextChangedListener(textWatcher);
+
     }
+
+    private final TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // 입력난에 변화가 있을 시 조치
+            EditText urls = (EditText)findViewById(R.id.urlLink);
+            TextView urlChange = (TextView) findViewById(R.id.urlLinkChange);
+            if(snsNumber == 2 && (urls.getText().toString().contains("https://") || urls.getText().toString().contains("www"))){
+                String str = urls.getText().toString();
+                String restr = str.replaceAll("[^0-9]","");
+                urlChange.setText(restr);
+            }
+            else if(snsNumber ==3 && (urls.getText().toString().contains("https://") || urls.getText().toString().contains("www"))){
+                String str = urls.getText().toString();
+                String restr = str.replaceAll(".+(?=...........)","");
+                urlChange.setText(restr);
+            }
+            else{
+                urlChange.setText(urls.getText().toString());
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+
+    };
+
     View.OnClickListener myClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.urlLayout);
             TextView textView = (TextView)findViewById(R.id.urlLink);
+            TextView urlSet = (TextView)findViewById(R.id.urlSet);
 
             switch (view.getId()) {
                 case R.id.instagram:
@@ -79,19 +119,21 @@ public class Sns extends AppCompatActivity {
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
                         textView.setHint("인스타그램 사용자명");
+                        urlSet.setText("https://instagram.com/");
+                        textView.setText("");
                         snsNumber = 1;
                     }
-                    Toast.makeText(getApplicationContext(), "인스타", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.facebook:
                     if(linearLayout.getVisibility() == View.VISIBLE && snsNumber == 2){
                         linearLayout.setVisibility(View.GONE);
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
-                        textView.setHint("페이스북 프로필 링크 붙여넣기");
+                        textView.setHint("페이스북 프로필 링크 붙여넣기(");
+                        urlSet.setText("https://facebook.com/");
+                        textView.setText("");
                         snsNumber = 2;
                     }
-                    Toast.makeText(getApplicationContext(), "페북", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.youtube:
                     if(linearLayout.getVisibility() == View.VISIBLE && snsNumber == 3){
@@ -99,9 +141,10 @@ public class Sns extends AppCompatActivity {
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
                         textView.setHint("유튜브 링크 붙여넣기");
+                        urlSet.setText("https://youtu.be/");
+                        textView.setText("");
                         snsNumber = 3;
                     }
-                    Toast.makeText(getApplicationContext(), "유튭", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.tiktok:
                     if(linearLayout.getVisibility() == View.VISIBLE && snsNumber == 4){
@@ -109,9 +152,10 @@ public class Sns extends AppCompatActivity {
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
                         textView.setHint("틱톡 사용자명");
+                        urlSet.setText("https://tiktok.com/@");
+                        textView.setText("");
                         snsNumber = 4;
                     }
-                    Toast.makeText(getApplicationContext(), "틱톡", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.twitter:
                     if(linearLayout.getVisibility() == View.VISIBLE && snsNumber == 5){
@@ -119,9 +163,10 @@ public class Sns extends AppCompatActivity {
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
                         textView.setHint("트위터 사용자명");
+                        urlSet.setText("https://twitter.com/");
+                        textView.setText("");
                         snsNumber = 5;
                     }
-                    Toast.makeText(getApplicationContext(), "트윝", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.github:
                     if(linearLayout.getVisibility() == View.VISIBLE && snsNumber == 6){
@@ -129,9 +174,10 @@ public class Sns extends AppCompatActivity {
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
                         textView.setHint("깃허브 사용자명");
+                        urlSet.setText("https://github.com/");
+                        textView.setText("");
                         snsNumber = 6;
                     }
-                    Toast.makeText(getApplicationContext(), "깃헙", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -164,18 +210,22 @@ public class Sns extends AppCompatActivity {
             }
             // facebook
             else if(snsNumber == 2){
-                if(url.getText().toString().contains("https://www.facebok.com/profile.php?id=")){
-                    snsName = url.getText().toString();
+                if(url.getText().toString().contains("www") || url.getText().toString().contains("https://")){
+                    String str = url.getText().toString();
+                    String restr = str.replaceAll("[^0-9]","");
+                    snsName = "https://facebook.com/" + restr;
                 }
                 else {
-//                    String str = url.getText().toString();
-//                    String restr = str.replaceAll("[^0-9]","");
-                    snsName = "https://www.facebok.com/profile.php?id=" + url.getText().toString();
+                    snsName = "https://facebook.com/" + url.getText().toString();
                 }
             }
             // youtube
             else if(snsNumber == 3){
-                snsName = "https://youtu.be.com/"+url.getText().toString();
+                if(url.getText().toString().contains("https://") || url.getText().toString().contains("www")) {
+                    snsName = url.getText().toString();
+                }else{
+                    snsName = "https://youtu.be/"+url.getText().toString();
+                }
             }
             // tiktok
             else if(snsNumber == 4){
