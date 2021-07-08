@@ -225,7 +225,7 @@
         android:id="@+id/btn8"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@drawable/kor_logo"
+        android:src="@drawable/sns"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
@@ -240,7 +240,7 @@
         android:id="@+id/btn8_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="토톡 바로기가"
+        android:text="SNS 프로필 링크"
 
         app:layout_constraintTop_toBottomOf="@+id/btn8"
         app:layout_constraintStart_toStartOf="@+id/btn8"
@@ -251,7 +251,7 @@
         android:id="@+id/btn9"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@drawable/plain"
+        android:src="@drawable/kor_logo"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
@@ -262,7 +262,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btn6"
         android:layout_marginTop="40dp"
         />
+    <TextView
+        android:id="@+id/btn9_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="토톡 바로기가"
 
+        app:layout_constraintTop_toBottomOf="@+id/btn9"
+        app:layout_constraintStart_toStartOf="@+id/btn9"
+        app:layout_constraintEnd_toEndOf="@+id/btn9"
+        android:layout_marginTop="8dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

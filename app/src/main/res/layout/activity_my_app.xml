@@ -9,7 +9,7 @@ tools:context=".MyApp">
 <TextView
     android:id="@+id/selectNum"
     android:text=""
-    android:visibility="invisible"
+    android:visibility="gone"
     android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
