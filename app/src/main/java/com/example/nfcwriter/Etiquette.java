@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,29 @@ public class Etiquette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etiquette);
 
+        final ImageButton vibe = (ImageButton)findViewById(R.id.vibeBtn);
+        final ImageButton mute = (ImageButton)findViewById(R.id.muteBtn);
+        final RadioButton vibrate_check = (RadioButton) findViewById(R.id.vibrate_checked);
+        final RadioButton silent_check = (RadioButton) findViewById(R.id.silent_checked);
+
+        vibe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibe.setImageResource(R.drawable.vibe_on);
+                mute.setImageResource(R.drawable.mute_off);
+                vibrate_check.setChecked(true);
+            }
+        });
+
+        mute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibe.setImageResource(R.drawable.vibe_off);
+                mute.setImageResource(R.drawable.mute_on);
+                silent_check.setChecked(true);
+            }
+        });
+
 
         ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
 
@@ -51,7 +75,7 @@ public class Etiquette extends AppCompatActivity {
 
                 enableTagWriteMode();
 
-                new AlertDialog.Builder(Etiquette.this).setTitle("Touch tag to write").setMessage("NFC 태그를 센서에 가까애 대주세요.")
+                new AlertDialog.Builder(Etiquette.this).setTitle("Touch tag to write").setMessage("NFC 태그를 센서에 가까이 대 주세요.")
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
@@ -163,5 +187,9 @@ public class Etiquette extends AppCompatActivity {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void goBack(View view){
+        finish();
     }
 }

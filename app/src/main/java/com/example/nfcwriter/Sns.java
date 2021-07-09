@@ -290,4 +290,8 @@ public class Sns extends AppCompatActivity {
             return false;
         }
     }
+
+    public void goBack(View view){
+        finish();
+    }
 }

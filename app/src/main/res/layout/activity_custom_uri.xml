@@ -22,6 +22,7 @@
             android:background="@android:color/transparent"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:onClick="goBack"
             />
         <TextView
             android:layout_width="match_parent"

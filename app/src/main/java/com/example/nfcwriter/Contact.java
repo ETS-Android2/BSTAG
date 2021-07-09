@@ -1,6 +1,7 @@
 package com.example.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -14,8 +15,12 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +33,32 @@ public class Contact extends AppCompatActivity {
     private NfcAdapter mNfcAdapter;
     private PendingIntent mNfcPendingIntent;
 
+    boolean isName = false;
+    boolean isCom = false;
+    boolean isPhone = false;
+    boolean isEmail = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+        Button main_btn = (Button)findViewById(R.id.button);
+        EditText edit_name = (EditText)findViewById(R.id.name);
+        EditText edit_com = (EditText)findViewById(R.id.comName);
+        EditText edit_phone = (EditText)findViewById(R.id.phoneNum);
+        EditText edit_email = (EditText)findViewById(R.id.mailAddress);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED);
+
+        //모든 form 작성 시에만 버튼이 활성화되도록 설정
+        clickableBtn(edit_name, edit_com, edit_phone, edit_email, main_btn);
+
+
+    }
+
+    public void actionBtn(Button btn){
+        btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -53,6 +78,131 @@ public class Contact extends AppCompatActivity {
                         }).create().show();
             }
         });
+    }
+
+
+    public void clickableBtn(EditText name, EditText com, EditText phone, EditText email, final Button btn){
+
+
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0){
+                    isName = true;
+                    if(isName && isCom && isPhone && isEmail){
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius_dark));
+                        actionBtn(btn);
+                    }
+                }else{
+                    isName = false;
+                    btn.setClickable(false);
+                    btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                }
+            }
+
+        });
+
+        com.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0){
+                    isCom = true;
+                    if(isName && isCom && isPhone && isEmail){
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius_dark));
+                        actionBtn(btn);
+                    }else{
+                        btn.setClickable(false);
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                    }
+                }else{
+                    isCom = false;
+                    btn.setClickable(false);
+                    btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                }
+            }
+        });
+
+        phone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0){
+                    isPhone = true;
+                    if(isName && isCom && isPhone && isEmail){
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius_dark));
+                        actionBtn(btn);
+                    }else{
+                        btn.setClickable(false);
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                    }
+                }else{
+                    isPhone = false;
+                    btn.setClickable(false);
+                    btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                }
+
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0){
+                    isEmail = true;
+                    if(isName && isCom && isPhone && isEmail){
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius_dark));
+                        actionBtn(btn);
+                    }else{
+                        btn.setClickable(false);
+                        btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                    }
+                }else{
+                    isEmail = false;
+                    btn.setClickable(false);
+                    btn.setBackground(ContextCompat.getDrawable(Contact.this, R.drawable.button_radius));
+                }
+            }
+        });
+
     }
 
     //tagwrite 모드 활성화
@@ -130,5 +280,9 @@ public class Contact extends AppCompatActivity {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void goBack(View view){
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -14,8 +15,11 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,26 +36,52 @@ public class Web extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+        EditText main_edit = (EditText)findViewById(R.id.webLink);
+        final Button main_btn = (Button)findViewById(R.id.button);
+
+        main_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
-            public void onClick(View v) {
-                mNfcAdapter = NfcAdapter.getDefaultAdapter(Web.this);
-                mNfcPendingIntent = PendingIntent.getActivity(Web.this, 0,
-                        new Intent(Web.this, Web.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                enableTagWriteMode();
+            }
 
-                new AlertDialog.Builder(Web.this).setTitle("Touch tag to write")
-                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                            @Override
-                            public void onCancel(DialogInterface dialog) {
-                                disableTagWriteMode();
-                            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0){
+                    main_btn.setOnClickListener(new View.OnClickListener() {
 
-                        }).create().show();
+                        @Override
+                        public void onClick(View v) {
+                            mNfcAdapter = NfcAdapter.getDefaultAdapter(Web.this);
+                            mNfcPendingIntent = PendingIntent.getActivity(Web.this, 0,
+                                    new Intent(Web.this, Web.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+
+                            enableTagWriteMode();
+
+                            new AlertDialog.Builder(Web.this).setTitle("Touch tag to write")
+                                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                        @Override
+                                        public void onCancel(DialogInterface dialog) {
+                                            disableTagWriteMode();
+                                        }
+
+                                    }).create().show();
+                        }
+                    });
+                    main_btn.setBackground(ContextCompat.getDrawable(Web.this, R.drawable.button_radius_dark));
+                }else{
+                    main_btn.setClickable(false);
+                    main_btn.setBackground(ContextCompat.getDrawable(Web.this, R.drawable.button_radius));
+                }
             }
         });
+
+
     }
 
     //tagwrite 모드 활성화
@@ -122,5 +152,9 @@ public class Web extends AppCompatActivity {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void goBack(View view){
+        finish();
     }
 }

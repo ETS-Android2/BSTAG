@@ -23,6 +23,7 @@
             android:background="@android:color/transparent"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:onClick="goBack"
             />
         <TextView
             android:layout_width="match_parent"
@@ -39,19 +40,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
-        android:textSize="60px"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:text="연락처를 입력해주세요."
-        android:layout_gravity="center"
-        android:textAlignment="center"
-
+        android:text="연락처 항목을 입력해주세요."
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_gravity="left"
         />
 
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
         android:text="이름"
         />
     <EditText
@@ -65,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/border"
+        android:background="@drawable/edit_rectangle"
 
         android:hint="ex) 홍길동"
         />
@@ -87,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/border"
+        android:background="@drawable/edit_rectangle"
 
         android:hint="ex) 올댓모바일"
         />
@@ -109,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/border"
+        android:background="@drawable/edit_rectangle"
 
         android:hint="ex) 01012341234"
         />
@@ -118,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:text="휴대폰번호"
+        android:text="이메일"
         />
     <EditText
         android:id="@+id/mailAddress"
@@ -131,7 +143,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/border"
+        android:background="@drawable/edit_rectangle"
 
         android:hint="ex) hongildong@gmail.com"
         />
@@ -139,12 +151,19 @@
 
     <Button
         android:id="@+id/button"
+        android:background="@drawable/button_radius"
+        android:textColor="#E5E4F0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+
+        android:clickable="false"
         android:text="NFC태그에 기록하기"
         />
-
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

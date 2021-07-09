@@ -127,4 +127,8 @@ public class CustomUri extends AppCompatActivity {
             return false;
         }
     }
+
+    public void goBack(View view){
+        finish();
+    }
 }

@@ -213,4 +213,8 @@ public class Map extends AppCompatActivity {
         editLng.setText(lng);
     }
 
+
+    public void goBack(View view){
+        finish();
+    }
 }
