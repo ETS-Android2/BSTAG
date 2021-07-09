@@ -63,6 +63,7 @@
         android:hint="ex) 01012341234"
         android:textAlignment="center"
         android:background="@drawable/edit_rectangle"
+        android:inputType="number"
         />
 
     <Button

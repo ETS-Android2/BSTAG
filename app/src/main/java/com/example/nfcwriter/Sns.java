@@ -1,6 +1,7 @@
 package com.example.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -39,26 +40,7 @@ public class Sns extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sns);
 
-        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                mNfcAdapter = NfcAdapter.getDefaultAdapter(Sns.this);
-                mNfcPendingIntent = PendingIntent.getActivity(Sns.this, 0,
-                        new Intent(Sns.this, Sns.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-
-                enableTagWriteMode();
-
-                new AlertDialog.Builder(Sns.this).setTitle("Touch tag to write")
-                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                            @Override
-                            public void onCancel(DialogInterface dialog) {
-                                disableTagWriteMode();
-                            }
-
-                        }).create().show();
-            }
-        });
 
         findViewById(R.id.instagram).setOnClickListener(myClick);
         findViewById(R.id.facebook).setOnClickListener(myClick);
@@ -68,6 +50,7 @@ public class Sns extends AppCompatActivity {
         findViewById(R.id.github).setOnClickListener(myClick);
 
         EditText urls = (EditText)findViewById(R.id.urlLink);
+
         urls.addTextChangedListener(textWatcher);
 
     }
@@ -100,7 +83,35 @@ public class Sns extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+            Button main_btn = (Button)findViewById(R.id.button);
 
+            if (s.length() > 0) {
+                main_btn.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        mNfcAdapter = NfcAdapter.getDefaultAdapter(Sns.this);
+                        mNfcPendingIntent = PendingIntent.getActivity(Sns.this, 0,
+                                new Intent(Sns.this, Sns.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+
+                        enableTagWriteMode();
+
+                        new AlertDialog.Builder(Sns.this).setTitle("Touch tag to write")
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialog) {
+                                        disableTagWriteMode();
+                                    }
+
+                                }).create().show();
+                    }
+                });
+
+                main_btn.setBackground(ContextCompat.getDrawable(Sns.this, R.drawable.button_radius_dark));
+            } else {
+                main_btn.setClickable(false);
+                main_btn.setBackground(ContextCompat.getDrawable(Sns.this, R.drawable.button_radius));
+            }
         }
 
     };
@@ -129,7 +140,7 @@ public class Sns extends AppCompatActivity {
                         linearLayout.setVisibility(View.GONE);
                     }else{
                         linearLayout.setVisibility(View.VISIBLE);
-                        textView.setHint("페이스북 프로필 링크 붙여넣기(");
+                        textView.setHint("페이스북 프로필 링크 붙여넣기");
                         urlSet.setText("https://facebook.com/");
                         textView.setText("");
                         snsNumber = 2;
