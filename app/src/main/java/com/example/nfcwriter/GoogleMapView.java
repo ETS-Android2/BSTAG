@@ -123,8 +123,17 @@ public class GoogleMapView extends AppCompatActivity
                 intent.putExtra("lng", editLng.getText().toString());
 
                 startActivity(intent);
+                finish();
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GoogleMapView.this, Map.class);
+        startActivity(intent);
+        super.onBackPressed();
 
     }
 
