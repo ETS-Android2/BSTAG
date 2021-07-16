@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/main_image"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:layout_width="220dp"
         android:layout_height="80dp"
         android:src="@drawable/bs_logo_text"
@@ -34,13 +34,14 @@
         android:layout_height="1dp"
         android:background="#55bcd8"
         app:layout_constraintTop_toBottomOf="@+id/main_image"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         />
+
 
     <ImageButton
         android:id="@+id/btn1"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/app"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -65,8 +66,8 @@
         />
     <ImageButton
         android:id="@+id/btn2"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/web"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -91,8 +92,8 @@
         />
     <ImageButton
         android:id="@+id/btn3"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/contact"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -118,8 +119,8 @@
 
     <ImageButton
         android:id="@+id/btn4"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
@@ -145,8 +146,8 @@
         />
     <ImageButton
         android:id="@+id/btn5"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/map"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -171,8 +172,8 @@
         />
     <ImageButton
         android:id="@+id/btn6"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/mute"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -198,8 +199,8 @@
 
     <ImageButton
         android:id="@+id/btn7"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/custom"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -224,8 +225,8 @@
         />
     <ImageButton
         android:id="@+id/btn8"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/sns"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -250,8 +251,8 @@
         />
     <ImageButton
         android:id="@+id/btn9"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/kor_logo"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -274,6 +275,7 @@
         app:layout_constraintEnd_toEndOf="@+id/btn9"
         android:layout_marginTop="8dp"
         />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
