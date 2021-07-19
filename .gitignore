@@ -10,8 +10,8 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
-/app/src/debug
-/app/src/release
+/app/src/debug/res/values/google_maps_api.xml
+/app/src/release/res/values/google_maps_api.xml
 /captures
 .externalNativeBuild
 .cxx
