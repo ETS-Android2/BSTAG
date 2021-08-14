@@ -80,7 +80,7 @@ public class MyApp extends AppCompatActivity {
 
                                     enableTagWriteMode();
 
-                                    new AlertDialog.Builder(MyApp.this).setTitle("Touch tag to write")
+                                    new AlertDialog.Builder(MyApp.this).setTitle("Touch tag to write").setMessage("NFC 태그를 핸드폰 뒷면에 가까이하세요.")
                                             .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                                 @Override
                                                 public void onCancel(DialogInterface dialog) {

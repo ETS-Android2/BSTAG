@@ -16,49 +16,64 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="위도"
+                    android:layout_margin="10dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_lat"
+                    android:textSize="10dp"
+                    android:textAlignment="center"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/edit_rectangle"
+                    android:layout_margin="10dp"
+                    android:enabled="false"
+                    />
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="경도"
+                    android:layout_margin="10dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_lng"
+                    android:textSize="10dp"
+                    android:textAlignment="center"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/edit_rectangle"
+                    android:layout_margin="10dp"
+                    android:enabled="false"
+                    />
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="위도"
-            android:layout_margin="10dp"
-            />
+            <Button
+                android:id="@+id/sendLocation"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="좌표 선택"
+                android:layout_margin="10dp"
+                android:background="@drawable/send_button"
+                />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edit_lat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="100dp"
-            android:background="@drawable/edit_rectangle"
-            android:layout_margin="10dp"
-            android:enabled="false"
-            />
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="경도"
-            android:layout_margin="10dp"
-            />
-
-        <EditText
-            android:id="@+id/edit_lng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="100dp"
-            android:background="@drawable/edit_rectangle"
-            android:layout_margin="10dp"
-            android:enabled="false"
-            />
-        <Button
-            android:id="@+id/sendLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="전달"
-            android:layout_margin="10dp"
-            android:background="@drawable/send_button"
-            />
         </LinearLayout>
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:map="http://schemas.android.com/apk/res-auto"

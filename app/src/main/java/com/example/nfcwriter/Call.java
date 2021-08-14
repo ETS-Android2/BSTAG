@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -64,7 +63,7 @@ public class Call extends AppCompatActivity {
 
                             enableTagWriteMode();
 
-                            new AlertDialog.Builder(Call.this).setTitle("Touch tag to write")
+                            new AlertDialog.Builder(Call.this).setTitle("Touch tag to write").setMessage("NFC 태그를 핸드폰 뒷면에 가까이하세요.")
                                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                         @Override
                                         public void onCancel(DialogInterface dialog) {

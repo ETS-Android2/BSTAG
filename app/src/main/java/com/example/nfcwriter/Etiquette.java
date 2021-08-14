@@ -75,7 +75,7 @@ public class Etiquette extends AppCompatActivity {
 
                 enableTagWriteMode();
 
-                new AlertDialog.Builder(Etiquette.this).setTitle("Touch tag to write").setMessage("NFC 태그를 센서에 가까이 대 주세요.")
+                new AlertDialog.Builder(Etiquette.this).setTitle("Touch tag to write").setMessage("NFC 태그를 핸드폰 뒷면에 가까이하세요.")
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
