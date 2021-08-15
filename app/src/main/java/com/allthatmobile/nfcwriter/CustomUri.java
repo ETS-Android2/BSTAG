@@ -1,7 +1,6 @@
-package com.example.nfcwriter;
+package com.allthatmobile.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -15,17 +14,14 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
-public class Web extends AppCompatActivity {
+public class CustomUri extends AppCompatActivity {
 
     boolean mWriteMode = false;
     private NfcAdapter mNfcAdapter;
@@ -34,55 +30,32 @@ public class Web extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_custom_uri);
 
-        EditText main_edit = (EditText)findViewById(R.id.webLink);
-        final Button main_btn = (Button)findViewById(R.id.button);
 
-        main_edit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onClick(View v) {
+                mNfcAdapter = NfcAdapter.getDefaultAdapter(CustomUri.this);
+                mNfcPendingIntent = PendingIntent.getActivity(CustomUri.this, 0,
+                        new Intent(CustomUri.this, CustomUri.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
 
-            }
+                enableTagWriteMode();
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() > 0){
-                    main_btn.setOnClickListener(new View.OnClickListener() {
+                new AlertDialog.Builder(CustomUri.this).setTitle("Touch tag to write").setMessage("NFC 태그를 핸드폰 뒷면에 가까이하세요.")
+                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                disableTagWriteMode();
+                            }
 
-                        @Override
-                        public void onClick(View v) {
-                            mNfcAdapter = NfcAdapter.getDefaultAdapter(Web.this);
-                            mNfcPendingIntent = PendingIntent.getActivity(Web.this, 0,
-                                    new Intent(Web.this, Web.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-
-                            enableTagWriteMode();
-
-                            new AlertDialog.Builder(Web.this).setTitle("Touch tag to write").setMessage("NFC 태그를 핸드폰 뒷면에 가까이하세요.")
-                                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                        @Override
-                                        public void onCancel(DialogInterface dialog) {
-                                            disableTagWriteMode();
-                                        }
-
-                                    }).create().show();
-                        }
-                    });
-                    main_btn.setBackground(ContextCompat.getDrawable(Web.this, R.drawable.button_radius_dark));
-                }else{
-                    main_btn.setClickable(false);
-                    main_btn.setBackground(ContextCompat.getDrawable(Web.this, R.drawable.button_radius));
-                }
+                        }).create().show();
             }
         });
-
-
     }
+
+
 
     //tagwrite 모드 활성화
     private void enableTagWriteMode() {
@@ -102,11 +75,12 @@ public class Web extends AppCompatActivity {
         // Tag writing mode
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
             NdefRecord record = NdefRecord.createUri("https://"+((TextView)findViewById(R.id.webLink)).getText().toString());
-            //NdefRecord record = NdefRecord.createMime( ((TextView)findViewById(R.id.mime)).getText().toString(), ((TextView)findViewById(R.id.value)).getText().toString().getBytes());
+
             NdefMessage message = new NdefMessage(new NdefRecord[] { record });
             if (writeTag(message, detectedTag)) {
-                Toast.makeText(this, "기록 성공! : 웹 링크가 기록되었습니다. ", Toast.LENGTH_LONG)
+                Toast.makeText(this, "기록 성공! : URI가 기록되었습니다. ", Toast.LENGTH_LONG)
                         .show();
             }
         }

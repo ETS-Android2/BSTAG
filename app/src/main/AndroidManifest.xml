@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nfcwriter">
+    package="com.allthatmobile.nfcwriter">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,6 +21,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
+    <queries>
+        <intent>
+            <action
+                android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 
 
     <application
@@ -32,10 +38,11 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true"
         android:hardwareAccelerated="false"
+        android:requestLegacyExternalStorage="true"
         >
 
-        <activity android:name=".Sns"></activity>
-        <activity android:name=".CustomUri" />
+        <activity android:name="com.allthatmobile.nfcwriter.Sns"></activity>
+        <activity android:name="com.allthatmobile.nfcwriter.CustomUri" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -49,12 +56,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".GoogleMapView"
+            android:name="com.allthatmobile.nfcwriter.GoogleMapView"
             android:label="@string/title_activity_google_map" />
-        <activity android:name=".Map" />
-        <activity android:name=".Etiquette" />
+        <activity android:name="com.allthatmobile.nfcwriter.Map" />
+        <activity android:name="com.allthatmobile.nfcwriter.Etiquette" />
         <activity
-            android:name=".AudioMode"
+            android:name="com.allthatmobile.nfcwriter.AudioMode"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -67,7 +74,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AudioMode2"
+            android:name="com.allthatmobile.nfcwriter.AudioMode2"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -79,11 +86,11 @@
                     android:scheme="totalknfc" />
             </intent-filter>
         </activity>
-        <activity android:name=".Web" />
-        <activity android:name=".Call" />
-        <activity android:name=".Contact" />
-        <activity android:name=".MyApp" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.allthatmobile.nfcwriter.Web" />
+        <activity android:name="com.allthatmobile.nfcwriter.Call" />
+        <activity android:name="com.allthatmobile.nfcwriter.Contact" />
+        <activity android:name="com.allthatmobile.nfcwriter.MyApp" />
+        <activity android:name="com.allthatmobile.nfcwriter.MainActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -91,7 +98,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="com.allthatmobile.nfcwriter.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

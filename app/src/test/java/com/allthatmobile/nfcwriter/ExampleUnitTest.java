@@ -1,4 +1,4 @@
-package com.example.nfcwriter;
+package com.allthatmobile.nfcwriter;
 
 import org.junit.Test;
 

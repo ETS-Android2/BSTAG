@@ -1,4 +1,4 @@
-package com.example.nfcwriter;
+package com.allthatmobile.nfcwriter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 

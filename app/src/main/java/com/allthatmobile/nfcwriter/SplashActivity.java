@@ -1,4 +1,4 @@
-package com.example.nfcwriter;
+package com.allthatmobile.nfcwriter;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

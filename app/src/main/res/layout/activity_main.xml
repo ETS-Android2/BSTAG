@@ -268,7 +268,7 @@
         android:id="@+id/btn9_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="토톡 바로기가"
+        android:text="토톡 바로가기"
 
         app:layout_constraintTop_toBottomOf="@+id/btn9"
         app:layout_constraintStart_toStartOf="@+id/btn9"

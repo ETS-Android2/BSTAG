@@ -1,4 +1,4 @@
-package com.example.nfcwriter;
+package com.allthatmobile.nfcwriter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
